@@ -1,9 +1,12 @@
 $background: #FBFAFF;
 $background__habit__button: #FFFFFF;
-$background__habit__button-hover: #5051F9;
+$background__habit__button-hover: #6c6cfa;
+$background__habit__button-active: #5051F9;
 $background__add__button-hover: #5051F9;
+$border__habit__button-hover: #6c6cfa;
 $border__add__button: #CAD5FF;
 $color__icon__habit: #5051F9;
+$color__icon__habit-hover: #FFFFFF;
 $color__icon__habit-active: #FFFFFF;
 $color__icon__add: #CAD5FF;
 $color__icon__add-active: #ffffff;
@@ -44,10 +47,18 @@ $shadow: rgba(62, 107, 224, 0.12);
   box-shadow: 0px 8px 5px $shadow;
 
   &:hover {
+    border: 1px solid $border__habit__button-hover;
     background-color: $background__habit__button-hover;
     box-shadow: none;
-    color: $color__icon__habit-active;
+    color: $color__icon__habit-hover;
   }
+}
+
+.habit__buttonActive {
+  background-color: $background__habit__button-active;
+  box-shadow: none;
+  color: $color__icon__habit-active;
+  transition: 0.2s ease-in-out;
 }
 
 .habit__button__add {

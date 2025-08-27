@@ -1,19 +1,21 @@
 import styles from './Sidebar.module.scss';
-import { habitsData } from '../../data/habits.jsx';
 import { AddButton } from '../../../public/buttons/iconsSVG.jsx';
 
-function Sidebar() {
+function Sidebar({ habits, currentHabitId, onHabitClick }) {
   return (
     <aside className={styles.sidebar}>
       <img className={styles.logo} src="./public/logo.svg" alt="Логотип" />
       <nav className={styles.habits}>
-        {habitsData.map((habit) => {
+        {habits.map((habit) => {
           const IconComponent = habit.icon;
+          const isActive = habit.id === currentHabitId;
           return (
             <button
               key={habit.id}
-              className={styles.habit__button}
+              className={`${styles.habit__button} ${isActive ? styles.habit__buttonActive : ''}`}
+              
               aria-label={`Привычка: ${habit.name}`}
+              onClick={() => onHabitClick(habit.id)}
             >
               <IconComponent/>
             </button>
