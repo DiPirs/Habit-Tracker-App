@@ -1,0 +1,53 @@
+$color-persentProgress: #768396;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.header__habit_Name {
+  margin: 0;
+}
+
+.header__habit_Goal {
+  margin: 0;
+}
+
+.header__progress {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 235px;
+  min-height: 35px;
+}
+
+.progress__info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info__progress {
+  color: $color-persentProgress;
+}
+
+.progress__bar{
+  width: 100%;
+  height: 8px;
+  background-color: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress__fill {
+   height: 100%;
+    background-color: #5051f9;
+    border-radius: 9999px;
+    transition: width 0.4s ease;
+}

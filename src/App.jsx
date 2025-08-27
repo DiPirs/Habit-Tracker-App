@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Sidebar from "./components/Sidebar/Sidebar";
+import Header from "./components/Header/Header"
 import { habitsData } from './data/habits';
 
 import style from "./App.module.scss"
@@ -17,8 +18,8 @@ function App() {
         currentHabitId={currentHabitId}
         onHabitClick={setCurrentHabitId}
       />
-      <main>
-        <h1>Привычка: {currentHabit?.name}</h1>
+      <main className={style.main}>
+        <Header habit = {currentHabit}/>
       </main>
     </div>
   );
