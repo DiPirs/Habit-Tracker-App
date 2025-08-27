@@ -1,0 +1,70 @@
+$background: #FBFAFF;
+$background__habit__button: #FFFFFF;
+$background__habit__button-hover: #5051F9;
+$background__add__button-hover: #5051F9;
+$border__add__button: #CAD5FF;
+$color__icon__habit: #5051F9;
+$color__icon__habit-active: #FFFFFF;
+$color__icon__add: #CAD5FF;
+$color__icon__add-active: #ffffff;
+$shadow: rgba(62, 107, 224, 0.12);
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  min-height: 100vh;
+  padding: 30px;
+  background-color: $background;
+}
+
+.styles.logo {
+  width: 66px;
+  height: 71px;
+}
+
+.habits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.habit__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  border: none;
+  border-radius: 15px;
+  color: $color__icon__habit;
+  background-color: $background__habit__button;
+  box-shadow: 0px 8px 5px $shadow;
+
+  &:hover {
+    background-color: $background__habit__button-hover;
+    box-shadow: none;
+    color: $color__icon__habit-active;
+  }
+}
+
+.habit__button__add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  padding: 10px;
+  color: $color__icon__add;
+  background: none;
+  border: 1px solid $border__add__button;
+  border-radius: 15px;
+
+  &:hover {
+    border: none;
+    background-color: $background__add__button-hover;
+    color: $color__icon__add-active;
+  }
+}
