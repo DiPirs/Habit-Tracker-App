@@ -1,19 +1,27 @@
+import { useState } from 'react';
 import styles from './Header.module.scss'
+import Comfirmed from '../Comfirmed/Comfirmed';
 
 function Header({ habit, onDeleteHabit }) {
   if (!habit) return null;
   
+  const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+
   const completed = habit.tasks?.filter(t => t.completed).length || 0;
   const total = habit.days? habit.days : 1;
   const progress = Math.round((completed / total) * 100);
 
-  const handleDelete = () => {
-    const confirmed = window.confirm(
-      `Вы уверены, что хотите удалить привычку "${habit.name}"?`
-    );
-    if (confirmed) {
-      onDeleteHabit(habit.id);
-    }
+   const handleDeleteClick = () => {
+    setIsConfirmOpen(true);
+  };
+
+  const handleConfirm = () => {
+    onDeleteHabit(habit.id);
+    setIsConfirmOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsConfirmOpen(false);
   };
 
   return(
@@ -23,7 +31,7 @@ function Header({ habit, onDeleteHabit }) {
           {habit.name}
           <button
             className={styles.header__habit_delButton}
-            onClick={handleDelete}
+            onClick={handleDeleteClick}
             aria-label="Удалить привычку"
           >
             <img src="./public/buttons/delete.svg" alt="Удалить привычку" />
@@ -44,6 +52,14 @@ function Header({ habit, onDeleteHabit }) {
           ></div>
         </div>
       </div>
+
+      {isConfirmOpen && (
+        <Comfirmed
+          habitName={habit.name}
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+        />
+      )}
     </header>
   );
 }

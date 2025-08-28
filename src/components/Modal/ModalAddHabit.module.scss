@@ -1,4 +1,5 @@
 $background__modal: #F3F6FD;
+$background__modal__wrapper: rgba(0, 0, 0, 0.5);
 $background__habit__button: #FFFFFF;
 $background__habit__button-hover: #6c6cfa;
 $background__habit__button-active: #5051F9;
@@ -7,6 +8,10 @@ $background__habit__icon-hover: #FFFFFF;
 $background__habit__icon-active: #FFFFFF;
 $color__border__input: #E7EBFB;
 $color__border__input_focus: #5051f9;
+$color__actions__button: #EDECFE;
+$color__actions__button-hover: #5051F9;
+$color__text__actions_button: #5051F9;
+$color__text__actions_button-hover: #EDECFE;
 
 .modal__wrapper {
   position: fixed;
@@ -14,7 +19,7 @@ $color__border__input_focus: #5051f9;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: $background__modal__wrapper;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,17 +89,12 @@ $color__border__input_focus: #5051f9;
     }
   }
 
-  $color__actions__button: #EDECFE;
-  $color__actions__button-hover: #5051F9;
-  $color__text__actions_button: #5051F9;
-  $color__text__actions_button-hover: #EDECFE;
-
   .modal__actions {
     display: flex;
     justify-content: space-between;
 
     .actions__button {
-      padding: 5px;
+      padding: 10px;
       border: none;
       border-radius: 9px;
       background-color: $color__actions__button;

@@ -1,0 +1,50 @@
+$background__modal: #F3F6FD;
+$background__modal__wrapper: rgba(0, 0, 0, 0.5);
+$color__actions__button: #EDECFE;
+$color__actions__button-hover: #5051F9;
+$color__text__actions_button: #5051F9;
+$color__text__actions_button-hover: #EDECFE;
+
+.comfirmed__wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $background__modal__wrapper;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.comfirmed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 450px;
+  background-color: $background__modal;
+  border-radius: 0px 0px 10px 10px;
+  padding: 10px;
+  
+  .comfirmed__actions {
+    display: flex;
+    padding: 0 15px;
+    justify-content: space-between;
+
+    .actions__button {
+      padding: 10px;
+      border: none;
+      border-radius: 9px;
+      background-color: $color__actions__button;
+      font-size: 15px;
+      color: $color__text__actions_button;
+      transition: 0.2s ease-in-out;
+
+      &:hover {
+        background-color: $color__actions__button-hover;
+        color: $color__text__actions_button-hover;
+      }
+    }
+  }
+}
