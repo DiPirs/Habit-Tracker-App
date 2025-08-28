@@ -1,0 +1,116 @@
+$background__item: #FFFFFF;
+$background__item__day: #f5f4f9;
+$color__border__item_comment: #E7EBFB;
+$color__border__item_comment_focus: #5051f9;
+$color__border__addDay_comment: #E7EBFB;
+$color__border__addDay_comment_focus: #5051f9;
+$color__actions__button: #EDECFE;
+$color__text__actions_button: #5051F9;
+$color__addDay__button: #EDECFE;
+$color__text__addDay_button: #5051F9;
+
+
+.taskList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .taskList__title {
+    margin: 0;
+  }
+
+  .taskList__task {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.task__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $background__item;
+  border-radius: 10px;
+
+  .item__day {
+    padding: 20px 45px;
+    background-color: $background__item__day;
+  }
+
+  .item__comment {
+    display: flex;
+    flex-grow: 1;
+    margin: 5px;
+    padding: 14px;
+    border: 1px solid $color__border__item_comment;
+    border-radius: 9px;
+    font-size: 16px;
+
+    &:focus {
+      border-color: $color__border__item_comment_focus;
+      outline: 1px solid $color__border__item_comment_focus;
+      outline-offset: 0px;
+      
+      &::placeholder {
+        padding: 0;
+        background-image: none;
+      }
+    }
+
+    &::placeholder {
+      background-image: url(./public/comment.svg);
+      background-repeat: no-repeat;
+      padding: 0 30px;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+
+  .item__actions {
+    display: flex;
+    gap: 10px;
+    margin-right: 5px;
+
+    .actions__status_button {
+      padding: 15px;
+      color: $color__text__actions_button;
+      background-color: $color__actions__button;
+      border: none;
+      border-radius: 9px;
+    }
+
+    .actions__delete_button {
+      background: none;
+      border: none;
+    }
+  }
+}
+
+.taskList__addDay {
+  display: flex;
+  gap: 10px;
+
+  .addDay__commentInput {
+    display: flex;
+    flex-grow: 1;
+    padding: 15px;
+    border: 1px solid $color__border__addDay_comment;
+    border-radius: 9px;
+    font-size: 16px;
+
+    &:focus {
+      border-color: $color__border__addDay_comment_focus;
+      outline: 1px solid $color__border__addDay_comment_focus;
+      outline-offset: 0px;
+    }
+  }
+
+  .addDay__addButton {
+    color: $color__text__addDay_button;
+    border: none;
+    border-radius: 9px;
+    background-color: $color__addDay__button;
+    font-size: 15px;
+  }
+}
+
