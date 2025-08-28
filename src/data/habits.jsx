@@ -12,13 +12,13 @@ export const habitsData = [
         id: 101,
         day: 'День 1',
         comment: 'Первый день дался тяжело',
-        compiled: true
+        completed: true
       },
       {
         id: 102,
         day: 'День 2',
         comment: '',
-        compiled: false
+        completed: false
       }
     ]
   },

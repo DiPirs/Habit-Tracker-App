@@ -2,7 +2,10 @@ import styles from './Header.module.scss'
 
 function Header({ habit }) {
   if (!habit) return null;
-  const progress = 20;
+  
+  const completed = habit.tasks?.filter(t => t.completed).length || 0;
+  const total = habit.tasks?.length || 1;
+  const progress = Math.round((completed / total) * 100);
 
   return(
     <header className={styles.header}>

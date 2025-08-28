@@ -1,5 +1,6 @@
 import styles from './Sidebar.module.scss';
-import { AddButton } from '../../../public/buttons/iconsSVG.jsx';
+import { AddButton } from '../../../public/buttons/iconsSVG';
+
 
 function Sidebar({ habits, currentHabitId, onHabitClick }) {
   return (
