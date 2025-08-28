@@ -3,7 +3,7 @@ import { AddButton } from '../../../public/buttons/addSVG';
 import { iconHabitsMap } from '../../../public/habits/iconsHabitsMap';
 
 
-function Sidebar({ habits, currentHabitId, onHabitClick }) {
+function Sidebar({ habits, currentHabitId, onHabitClick, onAddClick }) {
   return (
     <aside className={styles.sidebar}>
       <img className={styles.logo} src="./public/logo.svg" alt="Логотип" />
@@ -25,6 +25,8 @@ function Sidebar({ habits, currentHabitId, onHabitClick }) {
         })}
         <button
           className={styles.habit__button__add}
+          onClick={onAddClick}
+          aria-label="Добавить новую привычку"
         >
           <AddButton />
         </button>

@@ -4,7 +4,7 @@ function Header({ habit }) {
   if (!habit) return null;
   
   const completed = habit.tasks?.filter(t => t.completed).length || 0;
-  const total = habit.tasks?.length || 1;
+  const total = habit.days? habit.days : 1;
   const progress = Math.round((completed / total) * 100);
 
   return(
@@ -16,6 +16,7 @@ function Header({ habit }) {
       <div className={styles.header__progress}>
         <div className={styles.progress__info}>
           <span className={styles.info__title}>Прогресс</span>
+          <span className={styles.info__days}>{completed} / {total}</span>
           <span className={styles.info__progress}>{progress}%</span>
         </div>
         <div className={styles.progress__bar}>

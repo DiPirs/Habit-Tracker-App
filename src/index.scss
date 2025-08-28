@@ -14,3 +14,10 @@ body {
   padding: 0;
   background-color: $background;
 }
+
+// Убрать стрелки при вводе
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

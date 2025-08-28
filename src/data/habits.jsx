@@ -2,8 +2,9 @@ export const habitsData = [
   { 
     id: 1, 
     name: 'Отжимания', 
-    goal: '50 раз за месяц', 
+    goal: '10 раз каждый день', 
     icon: 'dumbbell',
+    days: 10,
     tasks: [
       {
         id: 101,
@@ -24,5 +25,6 @@ export const habitsData = [
     name: 'Питье', 
     goal: '2 литра в день', 
     icon: 'water',
+    days: 21
   },
 ];
