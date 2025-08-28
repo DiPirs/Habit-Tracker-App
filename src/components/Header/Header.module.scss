@@ -10,20 +10,29 @@ $color-persentProgress: #768396;
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
 
-.header__habit_Name {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  
+  .title__container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-  .header__habit_delButton {
-    margin-left: 10px;
-    border: none;
-    background: none;
+    .title__habit_Name {
+      display: flex;
+      align-items: center;
+      margin: 0;
+    }
+    
+    .title__habit_delButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 5px;
+      border: none;
+      background: none;
+    }
   }
 }
+
 
 .header__habit_Goal {
   margin: 0;
@@ -52,11 +61,12 @@ $color-persentProgress: #768396;
   background-color: #e5e7eb;
   border-radius: 9999px;
   overflow: hidden;
-}
-
-.progress__fill {
-   height: 100%;
+  
+  .progress__fill {
+    height: 100%;
     background-color: #5051f9;
     border-radius: 9999px;
     transition: width 0.4s ease;
+  }
 }
+

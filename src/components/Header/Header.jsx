@@ -27,17 +27,19 @@ function Header({ habit, onDeleteHabit }) {
   return(
     <header className={styles.header}>
       <div className={styles.header__title}>
-        <h1 className={styles.header__habit_Name}>
-          {habit.name}
+        <div className={styles.title__container}>
+          <h1 className={styles.title__habit_Name}>{habit.name}</h1>
           <button
-            className={styles.header__habit_delButton}
+            className={styles.title__habit_delButton}
             onClick={handleDeleteClick}
             aria-label="Удалить привычку"
           >
             <img src="./public/buttons/delete.svg" alt="Удалить привычку" />
           </button>
-        </h1>
-        <p className={styles.header__habit_Goal}>Цель: {habit.goal}</p>
+        </div>
+        <p className={styles.header__habit_Goal}>
+          Цель: {habit.goal} | В течении: {habit.days} дней.
+        </p>
       </div>
       <div className={styles.header__progress}>
         <div className={styles.progress__info}>

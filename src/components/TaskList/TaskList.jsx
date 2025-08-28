@@ -39,7 +39,6 @@ function TaskList ({ habit, updateTask, deleteTask, addDay }) {
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             onKeyDown={handleKeyDown}
-            rows="2"
           />
           <button className={styles.addDay__addButton} onClick={handleAddDay}>
             Добавить день
