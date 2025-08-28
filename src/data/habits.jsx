@@ -25,6 +25,7 @@ export const habitsData = [
     name: 'Питье', 
     goal: '2 литра в день', 
     icon: 'water',
-    days: 21
+    days: 21,
+    tasks: []
   },
 ];

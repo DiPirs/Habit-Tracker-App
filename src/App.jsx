@@ -63,17 +63,12 @@ function App() {
 
   return (
     <div className={style.page}>
-      <div className={style.page_left}>
-        <Sidebar 
-          habits={habits}
-          currentHabitId={currentHabitId}
-          onHabitClick={setCurrentHabitId}
-          onAddClick={() => setIsModalOpen(true)}
-        />
-      </div>
-      <div className={style.page_centr}>
-
-      </div>
+      <Sidebar 
+        habits={habits}
+        currentHabitId={currentHabitId}
+        onHabitClick={setCurrentHabitId}
+        onAddClick={() => setIsModalOpen(true)}
+      />
       <main className={style.main}>
         <Header habit = {currentHabit}/>
         <hr className={style.hr}/>

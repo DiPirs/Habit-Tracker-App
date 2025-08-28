@@ -4,7 +4,7 @@ import styles from "./TaskList.module.scss";
 function TaskList ({ habit, updateTask, deleteTask, addDay }) {
   const [newComment, setNewComment] = useState('');
 
-  if (!habit || !habit.tasks) return <p>Нет данных</p>;
+  
 
   const handleAddDay = () => {
     const newTask = {
@@ -17,6 +17,8 @@ function TaskList ({ habit, updateTask, deleteTask, addDay }) {
     setNewComment('');
   };
 
+  if (!habit) return <p>Нет записей. Добавьте их!</p>;
+
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       handleAddDay();
@@ -27,19 +29,24 @@ function TaskList ({ habit, updateTask, deleteTask, addDay }) {
     <div className={styles.taskList}>
       <h2 className={styles.taskList__title}>Записи</h2>
       <div className={styles.taskList__addDay}>
-        <input
-          className={styles.addDay__commentInput}
-          placeholder="Комментарий к новому дню..."
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          onKeyDown={handleKeyDown}
-          rows="2"
-        />
-        <button className={styles.addDay__addButton} onClick={handleAddDay}>
-          Добавить день
-        </button>
+        <div className={styles.addDay__title}>
+          <span>Добавить новую запись</span>
+        </div>
+        <div className={styles.addDay__container}>
+          <input
+            className={styles.addDay__commentInput}
+            placeholder="Комментарий к новому дню..."
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+            onKeyDown={handleKeyDown}
+            rows="2"
+          />
+          <button className={styles.addDay__addButton} onClick={handleAddDay}>
+            Добавить день
+          </button>
+        </div>
       </div>
-      {habit.tasks.lenght === 0 ? (
+      {habit.tasks.length === 0 ? (
         <p>Нет записей. Добавьте их!</p>
       ) : (
         <div className={styles.taskList__task}>
