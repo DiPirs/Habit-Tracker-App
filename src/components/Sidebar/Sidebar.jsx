@@ -1,5 +1,6 @@
 import styles from './Sidebar.module.scss';
-import { AddButton } from '../../../public/buttons/iconsSVG';
+import { AddButton } from '../../../public/buttons/addSVG';
+import { iconHabitsMap } from '../../../public/habits/iconsHabitsMap';
 
 
 function Sidebar({ habits, currentHabitId, onHabitClick }) {
@@ -8,7 +9,7 @@ function Sidebar({ habits, currentHabitId, onHabitClick }) {
       <img className={styles.logo} src="./public/logo.svg" alt="Логотип" />
       <nav className={styles.habits}>
         {habits.map((habit) => {
-          const IconComponent = habit.icon;
+          const IconComponent = iconHabitsMap[habit.icon];
           const isActive = habit.id === currentHabitId;
           return (
             <button
