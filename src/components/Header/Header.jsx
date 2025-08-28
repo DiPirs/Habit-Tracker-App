@@ -1,16 +1,34 @@
 import styles from './Header.module.scss'
 
-function Header({ habit }) {
+function Header({ habit, onDeleteHabit }) {
   if (!habit) return null;
   
   const completed = habit.tasks?.filter(t => t.completed).length || 0;
   const total = habit.days? habit.days : 1;
   const progress = Math.round((completed / total) * 100);
 
+  const handleDelete = () => {
+    const confirmed = window.confirm(
+      `Вы уверены, что хотите удалить привычку "${habit.name}"?`
+    );
+    if (confirmed) {
+      onDeleteHabit(habit.id);
+    }
+  };
+
   return(
     <header className={styles.header}>
       <div className={styles.header__title}>
-        <h1 className={styles.header__habit_Name}>{habit.name}</h1>
+        <h1 className={styles.header__habit_Name}>
+          {habit.name}
+          <button
+            className={styles.header__habit_delButton}
+            onClick={handleDelete}
+            aria-label="Удалить привычку"
+          >
+            <img src="./public/buttons/delete.svg" alt="Удалить привычку" />
+          </button>
+        </h1>
         <p className={styles.header__habit_Goal}>Цель: {habit.goal}</p>
       </div>
       <div className={styles.header__progress}>

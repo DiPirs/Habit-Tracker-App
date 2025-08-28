@@ -10,8 +10,8 @@ import style from "./App.module.scss";
 
 function App() {
   const [ habits, setHabits ] = useState(habitsData);
-  const [currentHabitId, setCurrentHabitId] = useState(habitsData[0].id);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [ currentHabitId, setCurrentHabitId ] = useState(habitsData[0].id);
+  const [ isModalOpen, setIsModalOpen ] = useState(false);
   const currentHabit = habits.find(h => h.id === currentHabitId);
 
   const updateTask = (taskId, updates) => {
@@ -59,6 +59,17 @@ function App() {
     setHabits(prev => [...prev, newHabit]);
     setCurrentHabitId(newHabit.id);
   };
+
+  const deleteHabit = (habitId) => {
+  setHabits(prev => prev.filter(h => h.id !== habitId));
+
+  if (currentHabitId === habitId) {
+    const remaining = habits.filter(h => h.id !== habitId);
+    if (remaining.length > 0) {
+      setCurrentHabitId(remaining[0].id);
+    }
+  }
+};
   
 
   return (
@@ -70,7 +81,10 @@ function App() {
         onAddClick={() => setIsModalOpen(true)}
       />
       <main className={style.main}>
-        <Header habit = {currentHabit}/>
+        <Header 
+          habit = {currentHabit}
+          onDeleteHabit={deleteHabit}
+        />
         <hr className={style.hr}/>
         <TaskList 
           habit={currentHabit}

@@ -13,7 +13,16 @@ $color-persentProgress: #768396;
 }
 
 .header__habit_Name {
+  display: flex;
+  align-items: center;
   margin: 0;
+  
+
+  .header__habit_delButton {
+    margin-left: 10px;
+    border: none;
+    background: none;
+  }
 }
 
 .header__habit_Goal {
