@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import style from "./ModalAddHabit.module.scss";
 
 import { iconHabitsMap } from "../../../public/habits/iconsHabitsMap";
@@ -9,7 +9,15 @@ function ModalAddHabit ({ isOpen, onCloseModal, onAddHabit }) {
   const [days, setDays] = useState('');
   const [selectedIcon, setSelectedIcon] = useState('dumbbell');
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') onCloseModal();
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleEsc);
+    }
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [isOpen, onCloseModal]);
 
   const handleSubmit = () => {
     if (!name.trim()) return;
@@ -36,9 +44,12 @@ function ModalAddHabit ({ isOpen, onCloseModal, onAddHabit }) {
       handleSubmit();
     }
   };
+
+  if (!isOpen) return null;
+
   return (
-    <div className={style.modal__wrapper}>
-      <div className={style.modal}>
+    <div className={style.modal__wrapper} onClick={onCloseModal}>
+      <div className={style.modal} onClick={(e) => e.stopPropagation()}>
         <h2 className={style.modal__title}>Новая привычка</h2>
         <div className={style.modal__select__icon}>
           {Object.keys(iconHabitsMap).map((iconKey) => {
