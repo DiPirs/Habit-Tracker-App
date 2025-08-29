@@ -1,12 +1,13 @@
 import styles from './Sidebar.module.scss';
 import { AddButton } from '../../../public/buttons/addSVG';
 import { iconHabitsMap } from '../../../public/habits/iconsHabitsMap';
+import logoUrl from '/logo.svg';
 
 
 function Sidebar({ habits, currentHabitId, onHabitClick, onAddClick }) {
   return (
     <aside className={styles.sidebar}>
-      <img className={styles.logo} src="./public/logo.svg" alt="Логотип" />
+      <img className={styles.logo} src={logoUrl} alt="Логотип" />
       <nav className={styles.habits}>
         {habits.map((habit) => {
           const IconComponent = iconHabitsMap[habit.icon];

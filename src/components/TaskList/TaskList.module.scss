@@ -10,6 +10,7 @@ $color__addDay__button: #EDECFE;
 $color__text__addDay_button: #5051F9;
 $color__icons-buttons: #768396;
 $color__icons-buttons-hover: #E7EBFB;
+$icon_url: '/comment.svg';
 
 
 .taskList {
@@ -62,7 +63,7 @@ $color__icons-buttons-hover: #E7EBFB;
     }
 
     &::placeholder {
-      background-image: url(./public/comment.svg);
+      background-image: url($icon_url);
       background-repeat: no-repeat;
       padding: 0 30px;
       transition: all 0.3s ease-in-out;
