@@ -52,7 +52,9 @@ function TaskList ({ habit, updateTask, deleteTask, addDay }) {
         <div className={styles.taskList__task}>
           {habit.tasks.map((task) => (
             <div key={task.id} className={styles.task__item}>
-              <span className={styles.item__day}>{task.day}</span>
+              <div className={styles.item__day}>
+                <span>{task.day}</span>
+              </div>
               <input
                 className={styles.item__comment}
                 placeholder="Добавьте комментарий..."

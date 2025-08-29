@@ -36,6 +36,7 @@ $color__icons-buttons-hover: #E7EBFB;
   border-radius: 10px;
 
   .item__day {
+    min-width: 150px;
     padding: 20px 45px;
     background-color: $background__item__day;
   }
@@ -74,6 +75,8 @@ $color__icons-buttons-hover: #E7EBFB;
     margin-right: 5px;
 
     .actions__status_button {
+      min-width: 108px;
+      min-height: 46px;
       padding: 15px;
       color: $color__text__actions_button;
       background-color: $color__actions__button;
@@ -101,7 +104,7 @@ $color__icons-buttons-hover: #E7EBFB;
 
   .addDay__container {
     display: flex;
-    gap: 10px; 
+    gap: 5px; 
     
     .addDay__commentInput {
       display: flex;
@@ -121,6 +124,7 @@ $color__icons-buttons-hover: #E7EBFB;
 
 
   .addDay__addButton {
+    min-width: 155px;
     color: $color__text__addDay_button;
     border: none;
     border-radius: 9px;

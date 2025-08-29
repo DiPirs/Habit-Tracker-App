@@ -53,7 +53,11 @@ function ModalAddHabit ({ isOpen, onCloseModal, onSubmit, habit = null }) {
   }, [isOpen]);
 
   const handleSubmit = () => {
-    if (!name.trim()) return;
+    if (!name.trim()) {
+      setError('Название обязательно');
+      return;
+    }
+    
 
     const habitData = {
       id: isEditing ? habit.id : Date.now(),
@@ -146,6 +150,7 @@ function ModalAddHabit ({ isOpen, onCloseModal, onSubmit, habit = null }) {
             onChange={(e) => setName(e.target.value)}
             onKeyDown={handleKeyDown}
             className={style.modal__input}
+            maxLength={30}
           />
         </div>
 
@@ -158,6 +163,7 @@ function ModalAddHabit ({ isOpen, onCloseModal, onSubmit, habit = null }) {
             onChange={(e) => setGoal(e.target.value)}
             onKeyDown={handleKeyDown}
             className={style.modal__input}
+            maxLength={70}
           />
         </div>
 
