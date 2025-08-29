@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import styles from './Header.module.scss'
 import Comfirmed from '../Comfirmed/Comfirmed';
+import { IconsButton } from "../../../public/buttons/iconsButton";
 
-function Header({ habit, onDeleteHabit }) {
+function Header({ habit, onEditHabit, onDeleteHabit }) {
   if (!habit) return null;
   
   const [isConfirmOpen, setIsConfirmOpen] = useState(false);
@@ -30,11 +31,18 @@ function Header({ habit, onDeleteHabit }) {
         <div className={styles.title__container}>
           <h1 className={styles.title__habit_Name}>{habit.name}</h1>
           <button
+            className={styles.title__habit_editButton}
+            onClick={() => onEditHabit(habit)}
+            aria-label="Редактировать привычку"
+          >
+            <IconsButton.editing />
+          </button>
+          <button
             className={styles.title__habit_delButton}
             onClick={handleDeleteClick}
             aria-label="Удалить привычку"
           >
-            <img src="./public/buttons/delete.svg" alt="Удалить привычку" />
+            <IconsButton.delete />
           </button>
         </div>
         <p className={styles.header__habit_Goal}>

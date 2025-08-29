@@ -30,7 +30,7 @@ $color__text__actions_button-hover: #EDECFE;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  min-width: 450px;
+  max-width: 450px;
   background-color: $background__modal;
   border-radius: 10px;
   padding: 10px;
@@ -43,8 +43,20 @@ $color__text__actions_button-hover: #EDECFE;
   .modal__select__icon {
     display: flex;
     gap: 10px;
+    
+    .icon_scroll_container {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      white-space: nowrap;
+    }
+
     .icon__Button{
       display: flex;
+      flex: 0 0 auto;
       justify-content: center;
       align-items: center;
       padding: 10px;

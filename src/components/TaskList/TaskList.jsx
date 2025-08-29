@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./TaskList.module.scss";
+import { IconsButton } from "../../../public/buttons/iconsButton";
 
 function TaskList ({ habit, updateTask, deleteTask, addDay }) {
   const [newComment, setNewComment] = useState('');
@@ -75,7 +76,7 @@ function TaskList ({ habit, updateTask, deleteTask, addDay }) {
                   onClick={() => deleteTask(task.id)}
                   aria-label="Удалить запись"
                 >
-                  <img src="./public/buttons/delete.svg" alt="" />
+                  <IconsButton.delete />
                 </button>
               </div>
             </div>

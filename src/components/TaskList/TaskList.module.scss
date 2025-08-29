@@ -8,6 +8,8 @@ $color__actions__button: #EDECFE;
 $color__text__actions_button: #5051F9;
 $color__addDay__button: #EDECFE;
 $color__text__addDay_button: #5051F9;
+$color__icons-buttons: #768396;
+$color__icons-buttons-hover: #E7EBFB;
 
 
 .taskList {
@@ -82,6 +84,8 @@ $color__text__addDay_button: #5051F9;
     .actions__delete_button {
       background: none;
       border: none;
+      color: $color__icons-buttons;
+      
     }
   }
 }

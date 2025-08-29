@@ -1,4 +1,7 @@
 $color-persentProgress: #768396;
+$backgrount__title-buttons: #6c6cfa;
+$color__icons-buttons: #768396;
+$color__icons-buttons-hover: #E7EBFB;
 
 .header {
   display: flex;
@@ -22,13 +25,21 @@ $color-persentProgress: #768396;
       margin: 0;
     }
     
-    .title__habit_delButton {
+    .title__habit_delButton, .title__habit_editButton {
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 5px;
       border: none;
+      border-radius: 9px;
       background: none;
+      transition: 0.2s ease-in-out;
+      color: $color__icons-buttons;
+
+      &:hover {
+        background-color: $backgrount__title-buttons;
+        color: $color__icons-buttons-hover;
+      }
     }
   }
 }

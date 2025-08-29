@@ -1,18 +1,42 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { habitsData } from './data/habits';
+import { loadFromLocalStorage, saveToLocalStorage } from './utils/localStorage';
 
 import Sidebar from "./components/Sidebar/Sidebar";
 import Header from "./components/Header/Header";
 import TaskList from './components/TaskList/TaskList';
-import ModalAddHabit from './components/Modal/ModalAddHabit';
+import ModalHabitForm from './components/Modal/ModalHabitForm';
 
 import style from "./App.module.scss";
 
 function App() {
-  const [ habits, setHabits ] = useState(habitsData);
-  const [ currentHabitId, setCurrentHabitId ] = useState(habitsData[0].id);
+  const [habits, setHabits] = useState(() => {
+    const saved = loadFromLocalStorage();
+    return saved?.habits || habitsData;
+  });
+
+  const [currentHabitId, setCurrentHabitId] = useState(() => {
+    const saved = loadFromLocalStorage();
+    return saved?.currentHabitId || habitsData[0].id;
+  });
+
   const [ isModalOpen, setIsModalOpen ] = useState(false);
+  const [ editingHabit, setEditingHabit ] = useState(null);
   const currentHabit = habits.find(h => h.id === currentHabitId);
+
+  useEffect(() => {
+    saveToLocalStorage({ habits, currentHabitId });
+  }, [habits, currentHabitId]);
+
+  const openAddModal = () => {
+  setEditingHabit(null);
+  setIsModalOpen(true);
+  };
+
+  const openEditModal = (habit) => {
+    setEditingHabit(habit);
+    setIsModalOpen(true);
+  };
 
   const updateTask = (taskId, updates) => {
     setHabits(prev =>
@@ -55,9 +79,13 @@ function App() {
     );
   };
 
-  const addNewHabit = (newHabit) => {
-    setHabits(prev => [...prev, newHabit]);
-    setCurrentHabitId(newHabit.id);
+  const handleSaveHabit = (savedHabit) => {
+    if (savedHabit.id && habits.some(h => h.id === savedHabit.id)) {
+      setHabits(prev => prev.map(h => h.id === savedHabit.id ? savedHabit : h));
+    } else {
+      setHabits(prev => [...prev, savedHabit]);
+      setCurrentHabitId(savedHabit.id);
+    }
   };
 
   const deleteHabit = (habitId) => {
@@ -69,7 +97,7 @@ function App() {
       setCurrentHabitId(remaining[0].id);
     }
   }
-};
+  };
   
 
   return (
@@ -78,11 +106,12 @@ function App() {
         habits={habits}
         currentHabitId={currentHabitId}
         onHabitClick={setCurrentHabitId}
-        onAddClick={() => setIsModalOpen(true)}
+        onAddClick={openAddModal}
       />
       <main className={style.main}>
         <Header 
           habit = {currentHabit}
+          onEditHabit={() => openEditModal(currentHabit)}
           onDeleteHabit={deleteHabit}
         />
         <hr className={style.hr}/>
@@ -94,10 +123,11 @@ function App() {
         />
       </main>
 
-      <ModalAddHabit
+      <ModalHabitForm
         isOpen={isModalOpen}
         onCloseModal={() => setIsModalOpen(false)}
-        onAddHabit={addNewHabit}
+        onSubmit={handleSaveHabit}
+        habit={editingHabit}
       />
     </div>
   );
