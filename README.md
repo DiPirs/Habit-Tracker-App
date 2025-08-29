@@ -25,8 +25,8 @@ Habbit - трекер привычек. Проект разработан с и�
 
 ## Установка и запуск
 1. Склонировать репозиторий: \
-`git clone https://github.com/dipirs/Habit-Tracker-App.git
-cd Habit-Tracker-App`
+`git clone https://github.com/dipirs/Habit-Tracker-App.git` \
+`cd Habit-Tracker-App`
 
 2. Установка зависимостей: \
 `npm install`
