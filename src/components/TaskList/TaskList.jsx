@@ -5,12 +5,17 @@ import { IconsButton } from "../../../public/buttons/iconsButton";
 function TaskList ({ habit, updateTask, deleteTask, addDay }) {
   const [newComment, setNewComment] = useState('');
 
-  
-
   const handleAddDay = () => {
+    const dayNumbers = habit.tasks.map(task => {
+    const match = task.day.match(/День\s+(\d+)/);
+      return match ? parseInt(match[1], 10) : 0;
+    });
+
+    const maxDay = dayNumbers.length > 0 ? Math.max(...dayNumbers) : 0;
+
     const newTask = {
       id: Date.now(),
-      day: `День ${habit.tasks.length + 1}`,
+      day: `День ${maxDay + 1}`,
       comment: newComment.trim() || '',
       completed: false,
     };
@@ -26,26 +31,43 @@ function TaskList ({ habit, updateTask, deleteTask, addDay }) {
     }
   };
 
+  const isGoalReached = habit.days && habit.tasks.filter(t => t.completed).length >= parseInt(habit.days, 10);
+
   return (
     <div className={styles.taskList}>
       <h2 className={styles.taskList__title}>Записи</h2>
-      <div className={styles.taskList__addDay}>
-        <div className={styles.addDay__title}>
-          <span>Добавить новую запись</span>
+
+      {!isGoalReached && (
+        <div className={styles.taskList__addDay}>
+          <div className={styles.addDay__title}>
+            <span>Добавить новую запись</span>
+          </div>
+          <div className={styles.addDay__container}>
+            <input
+              className={styles.addDay__commentInput}
+              placeholder="Комментарий к новому дню..."
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
+            <button
+              className={styles.addDay__addButton}
+              onClick={handleAddDay}
+              disabled={isGoalReached}
+            >
+              Добавить день
+            </button>
+          </div>
         </div>
-        <div className={styles.addDay__container}>
-          <input
-            className={styles.addDay__commentInput}
-            placeholder="Комментарий к новому дню..."
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          <button className={styles.addDay__addButton} onClick={handleAddDay}>
-            Добавить день
-          </button>
+      )}
+
+      {isGoalReached && (
+        <div className={styles.goalReached}>
+          <p>Цель достигнута! Все {habit.days} дней выполнены. Спасибо за участие!</p>
         </div>
-      </div>
+      )}
+
+      {/* Список задач */}
       {habit.tasks.length === 0 ? (
         <p>Нет записей. Добавьте их!</p>
       ) : (
@@ -67,9 +89,12 @@ function TaskList ({ habit, updateTask, deleteTask, addDay }) {
               <div className={styles.item__actions}>
                 <button
                   className={`${styles.actions__status_button} ${
-                    task.completed ? styles.status_button_completed 
-                    : styles.status_button_completed_pending}`}
+                    task.completed
+                      ? styles.status_button_completed
+                      : styles.status_button_pending
+                  }`}
                   onClick={() => updateTask(task.id, { completed: !task.completed })}
+                  disabled={isGoalReached}
                 >
                   {task.completed ? 'Готово' : 'Не готово'}
                 </button>
@@ -84,8 +109,7 @@ function TaskList ({ habit, updateTask, deleteTask, addDay }) {
             </div>
           ))}
         </div>
-        )   
-      }
+      )}
     </div>
   );
 }

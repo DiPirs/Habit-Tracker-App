@@ -60,11 +60,12 @@ $color__icons-buttons-hover: #E7EBFB;
 .progress__info {
   display: flex;
   justify-content: space-between;
+  
+  .info__progress {
+    color: $color-persentProgress;
+  }
 }
 
-.info__progress {
-  color: $color-persentProgress;
-}
 
 .progress__bar{
   width: 100%;

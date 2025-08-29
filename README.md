@@ -4,7 +4,7 @@ Habbit - трекер привычек. Проект разработан с и�
 ## Демонтрация приложения
 [Посмотреть онлайн (кликабельно)](https://dipirs.github.io/Habit-Tracker-App/) 
 
-![Habit Tracker Screenshot](https://github.com/DiPirs/Habit-Tracker-App/tree/main/src/assets/demo.png?raw=true)
+![Habit Tracker Screenshot](https://github.com/DiPirs/Habit-Tracker-App/blob/main/src/assets/demo.png?raw=true)
 
 
 ## Возможности приложения
